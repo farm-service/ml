@@ -1,0 +1,16 @@
+# Base image
+FROM python:3.10-slim
+
+# Working directory within the container
+WORKDIR /app 
+
+# Install dependencies
+COPY requirements-predict.txt ./
+RUN pip install --no-cache-dir -r requirements-predict.txt
+
+# Copy your essential files
+COPY models/forecaster_hawaii_m.pkl ./
+COPY main.py ./
+
+# Execute your inference script 
+CMD ["flask", "--app", "main.py", "run", "--host=0.0.0.0"]
