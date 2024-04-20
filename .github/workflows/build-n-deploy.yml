@@ -32,11 +32,8 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          acrName: farmserviceacr1
-          containerAppName: farmservice-predictor
-          resourceGroup: farmservice_rg
+          acrName: ${{ vars.AZURE_ACR_NAME }}
+          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
+          resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
           dockerfilePath: Dockerfile-slim
-          imageToBuild: farmserviceacr1.azurecr.io/farmservice-predictor:${{ steps.gitversion.outputs.SemVer }}
-          containerAppEnvironment: managedEnvironment-farmservicerg-a942
-          
-
+          imageToBuild: ${{ vars.AZURE_ACR_NAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.gitversion.outputs.SemVer }}
