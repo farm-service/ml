@@ -21,6 +21,10 @@ def predict():
 
     return jsonify(predictions)
 
+@app.route('/test')
+def test():
+    return jsonify({'message': 'success'})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
