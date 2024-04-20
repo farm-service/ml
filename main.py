@@ -16,8 +16,8 @@ def predict():
 
     start_date = datetime(2016, 1, 1)
 
-    predictions = [{'product_id': 1, 'amount': ceil(p), 'date': start_date + timedelta(days=i)} for i, p in
-                   enumerate(predictions)]
+    predictions = {{1: {'amount': ceil(p), 'date': start_date + timedelta(days=i)}} for i, p in
+                   enumerate(predictions)}
 
     return jsonify(predictions)
 
