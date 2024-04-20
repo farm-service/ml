@@ -25,4 +25,4 @@ jobs:
         sleep 10
 
     - name: Test container's response
-      run: curl --fail http://localhost:5000/predict || exit 1
+      run: curl --fail http://localhost:5000/test || exit 1
