@@ -1,0 +1,28 @@
+name: Docker Image Building and Running Test
+
+on:
+  pull_request:
+    types:
+    - opened
+    - edited
+    - reopened
+    - ready_for_review
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Docker image build test
+      run: docker build -t farmservice-predictor-test .
+
+    - name: Docker container run test
+      run: |
+        docker run --name farmservice-predictor-test -p 5000:5000 -d farmservice-predictor-test
+        sleep 10
+
+    - name: Test container's response
+      run: curl --fail http://localhost:5000/predict || exit 1
