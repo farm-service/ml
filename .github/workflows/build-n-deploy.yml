@@ -36,4 +36,4 @@ jobs:
           containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
           resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
           dockerfilePath: Dockerfile-slim
-          imageToBuild: ${{ vars.AZURE_ACR_NAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.gitversion.outputs.SemVer }}
+          imageToBuild: ${{ vars.AZURE_ACR_NAME }}.azurecr.io/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.gitversion.outputs.SemVer }}
