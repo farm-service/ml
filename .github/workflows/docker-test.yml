@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Docker image build test
-      run: docker build -t farmservice-predictor-test .
+      run: docker build -t farmservice-predictor-test -f ./Dockerfile-slim .
 
     - name: Docker container run test
       run: |
