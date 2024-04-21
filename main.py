@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/forecast', methods=['GET'])
 def predict():
-    with open('./models/forecaster_hawaii_m.pkl', 'rb') as f:
+    with open('/forecaster_hawaii_m.pkl', 'rb') as f:
         loaded_model = pickle.load(f)
 
     # [(1, date1, 2), (5, date1, 7), (1, date2, 5)]
